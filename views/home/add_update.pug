@@ -1,67 +1,44 @@
 include ../head.pug
 body
   .container.mt-5
-    h1 #{mode}
+    h1 #{mode === 'Update' ? 'Edit Recipe' : 'Create New Recipe'}
     .mb-3
-      label(for="eventName" class="form-label") Event Name
-      input(type="text" class="form-control" id="eventName" name="eventName" required)
+      label(for="recipeName" class="form-label") Recipe Name
+      input(type="text" class="form-control" id="recipeName" name="recipeName" required)
     .mb-3
-      label(for="eventDateTime" class="form-label") Event Date/Time
-      .input-group.date(id="datetimepicker1" data-target-input="nearest")
-        input(type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="eventDateTime" name="eventDateTime" required)
-        .input-group-append(data-target="#datetimepicker1" data-toggle="datetimepicker")
-          .input-group-text
-            i.fas.fa-calendar-alt
+      label(for="category" class="form-label") Category
+      input(type="text" class="form-control" id="category" name="category" required)
     .mb-3
-      label(for="venue" class="form-label") Venue
-      input(type="text" class="form-control" id="venue" name="venue" required)
+      label(for="ingredients" class="form-label") Ingredients
+      textarea(class="form-control" id="ingredients" name="ingredients" rows="4" required)
     .mb-3
-      label(for="contactPhone" class="form-label") Contact Phone
-      input(type="tel" class="form-control" id="contactPhone" name="contactPhone" required)
-    .mb-3
-      label(for="seat" class="form-label") Seat
-      input(type="text" class="form-control" id="seat" name="seat" required)
+      label(for="steps" class="form-label") Steps
+      textarea(class="form-control" id="steps" name="steps" rows="6" required)
     button(type="submit" class="btn btn-success" onclick="submitForm()") #{mode === 'Update' ? 'Update' : 'Add'}
     span &nbsp;
     button(type="submit" class="btn btn-primary" onclick="window.location.href='/'") Back to list
 
   script.
-    const format = 'DD/MM/YYYY HH:mm'
-    const picker = new tempusDominus.TempusDominus(document.getElementById('datetimepicker1'),{
-        localization: {
-            'locale': 'fr'
-        }
-    })
-    picker.dates.formatInput = function(date) {
-        return moment(date).format(format)
-    }
-
     if ("#{mode}" === "Update") {
-      const eventData = !{JSON.stringify(eventData || {})}.ticket;
-      document.getElementById('eventName').value = eventData.eventName || '';
-
-      picker.dates.setValue(
-        new tempusDominus.DateTime(moment(eventData.eventDateTime, format))
-      );
-
-      document.getElementById('venue').value = eventData.venue || '';
-      document.getElementById('contactPhone').value = eventData.contactPhone || '';
-      document.getElementById('seat').value = eventData.seat || '';
+      const recipeData = !{JSON.stringify(recipeData || {})};
+      document.getElementById('recipeName').value = recipeData.recipeName || '';
+      document.getElementById('category').value = recipeData.category || '';
+      document.getElementById('ingredients').value = recipeData.ingredients || '';
+      document.getElementById('steps').value = recipeData.steps || '';
     }
 
     function submitForm() {
-      const eventData = {
-        eventName: document.getElementById('eventName').value,
-        eventDateTime: document.getElementById('eventDateTime').value,
-        venue: document.getElementById('venue').value,
-        contactPhone: document.getElementById('contactPhone').value,
-        seat: document.getElementById('seat').value,
+      const recipeData = {
+        recipeName: document.getElementById('recipeName').value,
+        category: document.getElementById('category').value,
+        ingredients: document.getElementById('ingredients').value,
+        steps: document.getElementById('steps').value,
       };
 
-      const url = "#{mode}" === "Update" ? `/api/ticket/${!{JSON.stringify(eventData || {})}.id}` : '/api/ticket';
+      const url = "#{mode}" === "Update" ? `/api/recipe/${!{JSON.stringify(recipeData || {})}.id}` : '/api/recipe';
       const method = "#{mode}" === "Update" ? 'put' : 'post';
 
-      axios[method](url, eventData).then(response => {
+      axios[method](url, recipeData).then(response => {
         alert('Success!');
         location.href = '/'
       })
