@@ -1,7 +1,7 @@
 const { body, param } = require('express-validator');
-const ticket_service = require('../../services/ticket')
+const recipe_service = require('../../services/recipe')
 
-const addTicketValidation = () => {
+const addRecipeValidation = () => {
   return [
     body('eventName')
       .notEmpty().withMessage('Event name must not be empty')
@@ -20,23 +20,23 @@ const addTicketValidation = () => {
   ];
 };
 
-const deleteTicketValidation = () => {
+const deleteRecipeValidation = () => {
   return [
     param('id').custom(async (id) => {
-      const exists = await ticket_service.getById(id);
+      const exists = await recipe_service.getById(id);
       if (!exists) {
-        throw new Error('Ticket not found');
+        throw new Error('Recipe not found');
       }
     })
   ];
 };
 
-const updateTicketValidation = () => {
+const updateRecipeValidation = () => {
   return [
     param('id').custom(async (id) => {
-      const exists = await ticket_service.getById(id);
+      const exists = await recipe_service.getById(id);
       if (!exists) {
-        throw new Error('Ticket not found');
+        throw new Error('Recipe not found');
       }
     }),
     body('eventName')
@@ -57,7 +57,7 @@ const updateTicketValidation = () => {
 };
 
 module.exports = {
-    addTicketValidation,
-    updateTicketValidation,
-    deleteTicketValidation
+    addRecipeValidation,
+    updateRecipeValidation,
+    deleteRecipeValidation
 };

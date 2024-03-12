@@ -10,28 +10,25 @@ body
         thead
           tr
             th(scope="col") ID
-            th(scope="col") Event Name
-            th(scope="col") Event DateTime
-            th(scope="col") Venue
-            th(scope="col") Contact Phone
-            th(scope="col") Seat
-            th(scope="col") Actions
+            th(scope="col") Recipe Name
+            th(scope="col") Category
+            th(scope="col") Number of steps 
         tbody
 script.
-  document.addEventListener('DOMContentLoaded', function() {
-    axios.get('/api/ticket').then(function(response) {
-      const tickets = response.data;
+  document.addRecipeListener('DOMContentLoaded', function() {
+    axios.get('/api/recipe').then(function(response) {
+      const recipes = response.data;
       const tableBody = document.querySelector('table tbody');
-      tickets.forEach(t => {
+      recipes.forEach(t => {
         const row = document.createElement('tr');
-        const ticket = t.ticket
+        const recipe = t.recipe
         row.innerHTML = `
           <td>${t.id}</td>
-          <td>${ticket.eventName}</td>
-          <td>${ticket.eventDateTime}</td>
-          <td>${ticket.venue}</td>
-          <td>${ticket.contactPhone}</td>
-          <td>${ticket.seat}</td>
+          <td>${recipe.recipeName}</td>
+          <td>${recipe.eventDateTime}</td>
+          <td>${recipe.venue}</td>
+          <td>${recipe.contactPhone}</td>
+          <td>${recipe.numberOfSteps}</td>
           <td>
             <button class="btn btn-primary btn-sm" data-id="${t.id}" onclick="window.location.href='/update/${t.id}'">Update</button>
             <button class="btn btn-danger btn-sm" data-id="${t.id}">Delete</button>
@@ -47,13 +44,13 @@ script.
     // Use event delegation for delete buttons
     document.addEventListener('click', function(event) {
       if (event.target && event.target.classList.contains('btn-danger')) {
-        const ticketId = event.target.getAttribute('data-id');
-        axios.delete(`/api/ticket/${ticketId}`).then(function(response) {
+        const recipeId = event.target.getAttribute('data-id');
+        axios.delete(`/api/recipe/${recipeId}`).then(function(response) {
           alert('Deleted successfully', response);
           location.href = '/'
         })
         .catch(function(error) {
-          alert('Error deleting ticket: ' + error);
+          alert('Error deleting recipe: ' + error);
         });
       }
     });
