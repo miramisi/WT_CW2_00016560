@@ -1,12 +1,20 @@
 [
     {
         "id": "Z2Vx",
-        "ticket": {
-            "eventName": "hbhjbjbjb",
-            "eventDateTime": "13/03/2024 12:13",
-            "venue": "bjbjbn,n ",
-            "contactPhone": "+998900000000",
-            "seat": "1"
+        "recipe": {
+            "recipeName": "hbhjbjbjb",
+            "category": "dlf;kgl",
+            "ingredients": "bjbjbn,n ",
+            "steps": "1"
+        }
+    },
+    {
+        "id": "Hi51",
+        "recipe": {
+            "recipeName": "ndjfllkfd",
+            "category": "fdvnsjkfbv",
+            "ingredients": "jdbfvjsbdfjkv dj feb",
+            "steps": "cdv ks"
         }
     }
 ]

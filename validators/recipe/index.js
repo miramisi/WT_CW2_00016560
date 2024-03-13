@@ -1,22 +1,17 @@
 const { body, param } = require('express-validator');
-const recipe_service = require('../../services/recipe')
+const recipe_service = require('../../services/recipe');
 
 const addRecipeValidation = () => {
   return [
-    body('eventName')
-      .notEmpty().withMessage('Event name must not be empty')
-      .isLength({ min: 8, max: 255 }).withMessage('Event name must be between 8 and 255 characters long'),
-    body('eventDateTime')
-      .notEmpty().withMessage('Event date time must not be empty')
-      .matches(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d\s([01][0-9]|2[0-3]):([0-5][0-9])$/, 'g')
-        .withMessage('Invalid date and time format. Please use "DD/MM/YYYY HH:mm" format.'),
-    body('venue')
-      .notEmpty().withMessage('Event venue must not be empty'),
-    body('contactPhone')
-      .notEmpty().withMessage('Contact phone must not be empty')
-      .matches(/^\+998\d{9}$/).withMessage('Invalid phone number format, it must be +998xxxxxxxxx'),
-    body('seat')
-      .notEmpty().withMessage('Seat must not be empty'),      
+    body('recipeName')
+      .notEmpty().withMessage('Recipe name must not be empty')
+      .isLength({ min: 8, max: 255 }).withMessage('Recipe name must be between 8 and 255 characters long'),
+    body('ingredients')
+      .notEmpty().withMessage('Ingredients must not be empty'),
+    body('steps')
+      .notEmpty().withMessage('Steps must not be empty'),
+    body('category')
+      .notEmpty().withMessage('Category must not be empty'),
   ];
 };
 
@@ -27,7 +22,7 @@ const deleteRecipeValidation = () => {
       if (!exists) {
         throw new Error('Recipe not found');
       }
-    })
+    }),
   ];
 };
 
@@ -39,25 +34,20 @@ const updateRecipeValidation = () => {
         throw new Error('Recipe not found');
       }
     }),
-    body('eventName')
-      .notEmpty().withMessage('Event name must not be empty')
-      .isLength({ min: 8, max: 255 }).withMessage('Event name must be between 8 and 255 characters long'),
-    body('eventDateTime')
-      .notEmpty().withMessage('Event date time must not be empty')
-      .matches(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d\s([01][0-9]|2[0-3]):([0-5][0-9])$/, 'g')
-        .withMessage('Invalid date and time format. Please use "DD/MM/YYYY HH:mm" format.'),
-    body('venue')
-      .notEmpty().withMessage('Event venue must not be empty'),
-    body('contactPhone')
-      .notEmpty().withMessage('Contact phone must not be empty')
-      .matches(/^\+998\d{9}$/).withMessage('Invalid phone number format, it must be +998xxxxxxxxx'),
-    body('seat')
-      .notEmpty().withMessage('Seat must not be empty'),      
+    body('recipeName')
+      .notEmpty().withMessage('Recipe name must not be empty')
+      .isLength({ min: 8, max: 255 }).withMessage('Recipe name must be between 2 and 255 characters long'),
+    body('ingredients')
+      .notEmpty().withMessage('Ingredients must not be empty'),
+    body('steps')
+      .notEmpty().withMessage('Steps must not be empty'),
+    body('category')
+      .notEmpty().withMessage('Category must not be empty'),
   ];
 };
 
 module.exports = {
-    addRecipeValidation,
-    updateRecipeValidation,
-    deleteRecipeValidation
+  addRecipeValidation,
+  updateRecipeValidation,
+  deleteRecipeValidation,
 };
