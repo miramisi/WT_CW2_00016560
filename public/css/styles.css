@@ -6,7 +6,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-}
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(32, 25, 25, 0.1);
+
 
 h1 {
   font-size: 24px;
@@ -21,17 +24,18 @@ table {
 
 th,
 td {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 20px;
+  border: 2px solid #ff7eb9;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #ffcee6;
   font-weight: bold;
+  color: #ff4384;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #ffedf4;
 }
 
 /* Pagination styles */
@@ -53,22 +57,21 @@ tr:nth-child(even) {
 }
 
 .pagination a {
-  padding: 5px 10px;
+  padding: 10px 15px;
   text-decoration: none;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  color: #ff4384;
+  border: 2px solid #ff7eb9;
+  border-radius: 50px;
+  background-color: #ffcee6;
+  transition: background-color 0.3s ease;
 }
 
 .pagination a:hover {
-  background-color: #f2f2f2;
+  background-color: #ffdde4;
 }
 
 .pagination .active {
-  background-color: #333;
+  background-color: #ff4384;
   color: #fff;
 }
-
-/* Additional styles as per your design requirements */
-
-/* Add your custom styles here */
+}
