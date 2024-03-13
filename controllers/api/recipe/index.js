@@ -11,7 +11,7 @@ const recipe_controller = {
             recipe_service.create(req, res)
         )
     },
-    update(req, res) {
+    browse(req, res) {
         const recipe = recipe_service.update(req.params.id, req.body)
         
         if (recipe) {

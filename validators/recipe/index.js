@@ -5,7 +5,7 @@ const addRecipeValidation = () => {
   return [
     body('recipeName')
       .notEmpty().withMessage('Recipe name must not be empty')
-      .isLength({ min: 8, max: 255 }).withMessage('Recipe name must be between 8 and 255 characters long'),
+      .isLength({ min: 2, max: 255 }).withMessage('Recipe name must be between 2 and 255 characters long'),
     body('ingredients')
       .notEmpty().withMessage('Ingredients must not be empty'),
     body('steps')
@@ -36,7 +36,7 @@ const updateRecipeValidation = () => {
     }),
     body('recipeName')
       .notEmpty().withMessage('Recipe name must not be empty')
-      .isLength({ min: 8, max: 255 }).withMessage('Recipe name must be between 2 and 255 characters long'),
+      .isLength({ min: 2, max: 255 }).withMessage('Recipe name must be between 2 and 255 characters long'),
     body('ingredients')
       .notEmpty().withMessage('Ingredients must not be empty'),
     body('steps')

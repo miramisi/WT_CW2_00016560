@@ -16,8 +16,9 @@ body
           th(scope="col") Number of steps
           th(scope="col") Actions
       tbody
+      // JavaScript code
   script.
-    document.addRecipeListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
       axios.get('/api/recipe').then(function(response) {
         const recipes = response.data;
         const tableBody = document.querySelector('table tbody');
@@ -30,7 +31,7 @@ body
             <td>${recipe.numberOfSteps}</td>
             <td>
               <button class="btn btn-primary btn-sm" data-id="${recipe.id}" onclick="window.location.href='/update/${recipe.id}'">Update</button>
-              <button class="btn btn-danger btn-sm" data-id="${recipe.id}" onclick="deleteRecipe(recipe)">Delete</button>
+              <button class="btn btn-danger btn-sm" data-id="${recipe.id}" onclick="deleteRecipe(this)">Delete</button>
             </td>
           `;
           tableBody.appendChild(row);
@@ -42,7 +43,7 @@ body
     });
 
     function deleteRecipe(recipe) {
-      const recipeId = recipe.target.getAttribute('data-id');
+      const recipeId = recipe.getAttribute('data-id');
       axios.delete(`/api/recipe/${recipeId}`).then(function(response) {
         alert('Deleted successfully', response);
         location.href = '/';
