@@ -26,9 +26,9 @@ body
           const row = document.createElement('tr');
           row.innerHTML = `
             <td>${recipe.id}</td>
-            <td>${recipe.recipeName}</td>
-            <td>${recipe.category}</td>
-            <td>${recipe.numberOfSteps}</td>
+            <td>${recipe.recipe.recipeName}</td>
+            <td>${recipe.recipe.category}</td>
+            <td>${recipe.recipe.numberOfSteps}</td>
             <td>
               <button class="btn btn-primary btn-sm" data-id="${recipe.id}" onclick="window.location.href='/update/${recipe.id}'">Update</button>
               <button class="btn btn-danger btn-sm" data-id="${recipe.id}" onclick="deleteRecipe(this)">Delete</button>

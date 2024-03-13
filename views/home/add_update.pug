@@ -20,7 +20,7 @@ body
 
   script.
     if ("#{mode}" === "Update") {
-      const recipeData = !{JSON.stringify(recipeData || {})};
+      const recipeData = !{JSON.stringify(recipeData || {})}.recipe;
       document.getElementById('recipeName').value = recipeData.recipeName || '';
       document.getElementById('category').value = recipeData.category || '';
       document.getElementById('ingredients').value = recipeData.ingredients || '';
