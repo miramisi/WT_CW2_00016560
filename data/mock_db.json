@@ -2,46 +2,20 @@
     {
         "id": "Gm2I",
         "recipe": {
-            "recipeName": "pdf",
-            "category": "123",
-            "ingredients": "aaaaaaa",
-            "steps": "aaaaaa"
+            "recipeName": "bread",
+            "category": "middle",
+            "ingredients": "water, salt, egg, flour",
+            "steps": "Step 1: Step 2:"
         }
     },
     {
         "id": "VRz9",
         "recipe": {
-            "recipeName": "bgbjgb",
-            "category": "aaaaaa",
-            "ingredients": "ukyg",
-            "steps": "gnu"
-        }
-    },
-    {
-        "id": "Hu1C",
-        "recipe": {
-            "recipeName": "dddd",
-            "category": "fffff",
-            "ingredients": "hhhh",
-            "steps": "hhvh"
-        }
-    },
-    {
-        "id": "oKia",
-        "recipe": {
-            "recipeName": "jhkgjvc",
-            "category": "jk",
-            "ingredients": "hjhjb",
-            "steps": "bj"
-        }
-    },
-    {
-        "id": "muvJ",
-        "recipe": {
-            "recipeName": "kjbhn vb",
-            "category": "ko;jhljbkhjv",
-            "ingredients": "jihkjv",
-            "steps": "okjljbh"
+            "recipeName": "pasta",
+            "category": "easy",
+            "ingredients": "salt, water, pasta",
+            "steps": "Step 1: Fill a large pot with six quarts water. Bring to a boil. Add salt. Step 2: Add dried pasta Step 3: Wait 10 minutes"
         }
     }
+    
 ]
