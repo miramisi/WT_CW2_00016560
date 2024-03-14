@@ -16,8 +16,8 @@ app.use('/js', express.static('public/js'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('./api', api_route); 
-app.use('./', web_route); 
+app.use('/api', api_route); 
+app.use('/', web_route); 
 
 app.use((req, res) => {
     res.redirect('/');
