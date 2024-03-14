@@ -1,9 +1,7 @@
 const fs = require('fs')
 
-// access global mock db file
 const recipes = require(global.mock_db)
 
-// write service method implementations
 const recipe_service = {
     getAll() {
         return recipes
@@ -47,7 +45,6 @@ const recipe_service = {
     }
 }
 
-// create function for overwriting the db file updated db content
 let writeToFile = async (users) => {
     await 
         fs.writeFileSync(
