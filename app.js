@@ -17,11 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', api_route); 
-app.use('./', web_route); 
+app.use('/', web_route); 
 
 app.use((req, res) => {
     res.redirect('/');
 });
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
